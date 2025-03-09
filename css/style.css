@@ -1,12 +1,12 @@
 body { 
     font-family: Arial, sans-serif; 
-    text-align: center; 
     background-color: #dddada; 
     margin: 0; 
     padding: 0; 
 }
 h1 { 
     color: #333;
+    text-align: center;
     margin-top: 5;
     background-color: aquamarine;
     padding: 20px;
@@ -15,6 +15,8 @@ h1 {
     position: sticky;
  }
 #gallery { 
+    width: 80%;
+    margin: auto;
     display: grid; 
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
     gap: 20px; 
@@ -29,7 +31,7 @@ h1 {
     text-align: center;
 }
 img { 
-    width: 80%; 
+    width: 100%; 
     height: auto; 
     border-radius: 10px; 
 }
@@ -57,3 +59,10 @@ button {
     font-size: 14px;
     color: #333;
 }
+@media (max-width: 500px) {
+    #gallery{
+        width: 95%;
+    }
+    
+}
+@

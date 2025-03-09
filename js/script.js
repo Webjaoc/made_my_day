@@ -12,10 +12,12 @@ async function fetchImages() {
 
         // Loop through each image retrieved from the API
             data.forEach(image => {
+                console.log(data)
                 const card = document.createElement("div");
                 card.classList.add("card"); 
             // Insert the image and the "Like" and "Dislike" buttons
                 card.innerHTML = `
+                    <h3>${image.description}</h3>
                     <img src="${image.url}" alt="Image ${image.id}">
                     <div class="buttons">
                         <button class="like" onclick="rateImage('${image.id}', 'LIKE', this)">Like</button>
@@ -25,7 +27,9 @@ async function fetchImages() {
                 `;
                 // Add the card to the main gallery container
                 gallery.appendChild(card);
-        });
+                
+        } );
+        
     } catch (error) {
         document.getElementById("gallery").innerText = "Error loading images.";
         console.error(error);
