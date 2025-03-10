@@ -20,6 +20,7 @@ async function fetchImages() {
                     <h3>${image.description}</h3>
                     <img src="${image.url}" alt="Image ${image.id}">
                     <div class="buttons">
+                        <p>Likes: ${image.likes}</p>
                         <button class="like" onclick="rateImage('${image.id}', 'LIKE', this)">Like</button>
                         <button class="dislike" onclick="rateImage('${image.id}', 'DISLIKE', this)">don't like</button>
                     </div>
@@ -43,7 +44,9 @@ async function rateImage(bild_id, rating, button) {
             method: "POST", 
             headers: { "Content-Type": "application/json" }, 
             body: JSON.stringify({ id: bild_id, rate: rating }) 
+            
         });
+        
         // Get the element where the success or error message will be displayed
         const messageBox = button.closest('.card').querySelector('.message');
 
@@ -55,9 +58,13 @@ async function rateImage(bild_id, rating, button) {
             messageBox.innerText = "Error submitting rating.";
             messageBox.style.color = "red"; 
         }
+        setTimeout(() => {
+            messageBox.innerText = "";
+        }, 2000);
     } catch (error) {
         console.error(error);
     }
+    
 }
 
 // Call the function to fetch and display images when the page loads

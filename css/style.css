@@ -35,12 +35,20 @@ img {
     height: auto; 
     border-radius: 10px; 
 }
+p {
+    color:#016405;
+    font-weight: 700;
+    text-align: left;
+    visibility: hidden;
+}
 .buttons {
     margin-top: 10px;
 }
+.buttons:hover p{
+        visibility: visible;
+}
 button { 
     border: none; 
-    padding: 8px 12px; 
     margin: 5px; 
     cursor: pointer; 
     border-radius: 5px; 
@@ -49,10 +57,12 @@ button {
 .like { 
     background: #4CAF50; 
     color: white; 
+    padding: 8px 18px; 
 }
 .dislike { 
     background: #f44336; 
-    color: white; 
+    color: white;
+    padding: 8px 5px; 
 }
 .message {
     margin-top: 10px;
