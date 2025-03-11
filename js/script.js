@@ -12,7 +12,6 @@ async function fetchImages() {
 
         // Loop through each image retrieved from the API
             data.forEach(image => {
-                console.log(data)
                 const card = document.createElement("div");
                 card.classList.add("card"); 
             // Insert the image and the "Like" and "Dislike" buttons
@@ -39,14 +38,16 @@ async function fetchImages() {
 
 // Function to rate an image (Like / Dislike)
 async function rateImage(bild_id, rating, button) {
+    
     try {
         const response = await fetch('https://api.mademyday.ai/Mock/rateimages.php', {
             method: "POST", 
             headers: { "Content-Type": "application/json" }, 
-            body: JSON.stringify({ id: bild_id, rate: rating }) 
-            
+            body: JSON.stringify({ id: bild_id, rate: rating })            
         });
-        
+        if(!response.ok){
+            throw new Error('Error fetching images3')
+        }
         // Get the element where the success or error message will be displayed
         const messageBox = button.closest('.card').querySelector('.message');
 
@@ -62,6 +63,7 @@ async function rateImage(bild_id, rating, button) {
             messageBox.innerText = "";
         }, 2000);
     } catch (error) {
+        gallery.innerText = `Error: ${error.message}...`;
         console.error(error);
     }
     
